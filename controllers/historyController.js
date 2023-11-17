@@ -14,3 +14,12 @@ exports.savingPromptAndResponseToDatabase = async (req, res) => {
     }
 }
 
+exports.getData = async (req, res) => {
+    try{
+        let data = await HistoryModel.find({}).lean();
+
+        res.status(200).send(data)
+    }catch(err){
+        res.status(404).send("failed");
+    }
+}

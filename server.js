@@ -63,6 +63,12 @@ io.on('connection', (socket) => {
             //api to send payload to mongoDB
             makeHistoryResponse = await axios.post(`http://localhost:3000/history/makeHistory`, payload);
         }
+
+        //getting prompt and response from the mongodb
+        if(makeHistoryResponse.data === "success"){
+            let response = await axios.get(`http://localhost:3000/history/getHistory`);
+            // console.log(response.data);
+        }
     });
 });
 
