@@ -3,6 +3,7 @@ const http = require("http");
 const path = require("node:path");
 const { Server } = require("socket.io");
 const mongoose = require('mongoose');
+const axios = require("axios");
 require("dotenv").config();
 
 let server = http.createServer(app);
@@ -41,8 +42,13 @@ app.get("/", (req, res) => {
 
 //sending response to client using socket.io
 io.on('connection', (socket) => {
-    socket.on('chat message', async (msg) => {
-        io.emit('chat message', msg);
+    socket.on('chat message', async (prompt) => {
+        io.emit('chat message', prompt);
+
+        //using endpoint to interact with chatGPT openai.
+        let response = await axios.get(`http://localhost:3000/openai/response/${prompt}`);
+        let promptResponse = response.data
+        console.log(promptResponse);
     });
 });
 
