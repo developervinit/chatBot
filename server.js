@@ -67,9 +67,18 @@ io.on('connection', (socket) => {
         //getting prompt and response from the mongodb
         if(makeHistoryResponse.data === "success"){
             let response = await axios.get(`http://localhost:3000/history/getHistory`);
-            // console.log(response.data);
+            let data = response.data;
+            io.emit("historyData", data);
         }
     });
+
+    socket.on("historyData", async (msg) => {
+        if(msg === "onload"){
+            let response = await axios.get(`http://localhost:3000/history/getHistory`);
+            let data = response.data;
+            io.emit("historyData", data);
+        }
+    })
 });
 
 

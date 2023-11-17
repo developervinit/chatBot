@@ -15,6 +15,7 @@
 </head>
 <body>
     <h2>Bob a chatbot for goodspace</h2>
+    <ul id="history"></ul>
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
@@ -28,6 +29,8 @@
         const form = document.getElementById("form");
         const input = document.getElementById("input");
         const messages = document.getElementById("messages");
+        const history = document.getElementById("history");
+
   
         //from client on submit-event emitting a massage to server 
         form.addEventListener("submit", (e) => {
@@ -57,8 +60,50 @@
             element[0].remove();
             item.textContent = `Bob: ${msg.chatGpt}`;
             messages.appendChild(item);
+            messages.innerHTML = " "; //tricking the dom
         }
+        window.scrollTo(0, document.body.scrollHeight);
         });
+
+        //sending event to get data from the mongodb on first load of application
+        socket.emit("historyData", "onload");
+
+        //listening event when "historyData" event emit value from server side.
+        socket.on("historyData", (data) => {
+        if(data.length){
+            renderHistory(data)
+        }
+      });
+
+      //render function to display history data in the dom.
+      function renderHistory(data){
+        history.innerHTML = " ";
+        data.forEach((obj) => {
+          const dateString = obj.date;
+          const date = new Date(dateString);
+
+          const options = {day: "2-digit", month: "2-digit", year: "numeric"};
+          const formattedDate = new Intl.DateTimeFormat(
+            "en",
+            options
+          ).format(date);
+
+          let i = document.createElement("li");
+          let p1 = `<p>${obj.prompt}</p>`;
+          let p2 = `<p>${obj.response}</p>`;
+
+          let html = `<div class="promptContainer">
+                        <span class="promptDate">${formattedDate}</span>
+                        <div class="promptWrapper">
+                           <p>You: ${obj.prompt}</P
+                           <p>Bob: ${obj.response}</P
+                        </div>
+                      </div>`;
+
+          i.innerHTML = html;
+          history.appendChild(i);
+        });
+      }
       </script>
 
 </body>
