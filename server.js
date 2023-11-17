@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
         io.emit('chat message', {client: prompt});
 
         //using endpoint to interact with chatGPT openai.
-        let response = await axios.get(`http://localhost:3000/openai/response/${prompt}`);
+        let response = await axios.get(`http://localhost:3001/openai/response/${prompt}`);
         let promptResponse = response.data
         io.emit('chat message', {chatGpt: promptResponse});
 
@@ -61,12 +61,12 @@ io.on('connection', (socket) => {
         //saving prompt and response to mongodb
         if(payload.prompt && payload.response){
             //api to send payload to mongoDB
-            makeHistoryResponse = await axios.post(`http://localhost:3000/history/makeHistory`, payload);
+            makeHistoryResponse = await axios.post(`http://localhost:3001/history/makeHistory`, payload);
         }
 
         //getting prompt and response from the mongodb
         if(makeHistoryResponse.data === "success"){
-            let response = await axios.get(`http://localhost:3000/history/getHistory`);
+            let response = await axios.get(`http://localhost:3001/history/getHistory`);
             let data = response.data;
             io.emit("historyData", data);
         }
@@ -74,7 +74,7 @@ io.on('connection', (socket) => {
 
     socket.on("historyData", async (msg) => {
         if(msg === "onload"){
-            let response = await axios.get(`http://localhost:3000/history/getHistory`);
+            let response = await axios.get(`http://localhost:3001/history/getHistory`);
             let data = response.data;
             io.emit("historyData", data);
         }

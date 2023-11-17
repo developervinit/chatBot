@@ -1,9 +1,10 @@
 const {OpenAI} = require('openai');
-
+require("dotenv").config();
 
 exports.openAiResponse = async (req, res) => {
 
-    let openAiKey = process.env.OPENAIKEY;
+    let openAiKey = process.env.GPT_OPENAIKEY;
+    console.log("vinit", openAiKey);
 
     const openai = new OpenAI({
         apiKey: openAiKey, // defaults to process.env["OPENAI_API_KEY"]
