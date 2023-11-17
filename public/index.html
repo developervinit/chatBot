@@ -11,5 +11,33 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io(); //creating instance
+  
+        //getting html elements
+        const form = document.getElementById("form");
+        const input = document.getElementById("input");
+        const messages = document.getElementById("messages");
+  
+        //from client on submit-event emitting a massage to server 
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (input.value) {
+            socket.emit("chat message", input.value); //emit massage
+            input.value = "";
+          }
+        });
+  
+        //received massage from server and then display it on dom.
+        socket.on("chat message", (msg) => {
+          const item = document.createElement("li");
+          item.textContent = msg;
+          messages.appendChild(item);
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      </script>
+
 </body>
 </html>
