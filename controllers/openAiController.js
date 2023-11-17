@@ -2,8 +2,11 @@ const {OpenAI} = require('openai');
 
 
 exports.openAiResponse = async (req, res) => {
+
+    let openAiKey = process.env.OPENAIKEY;
+
     const openai = new OpenAI({
-        apiKey: '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', // defaults to process.env["OPENAI_API_KEY"]
+        apiKey: openAiKey, // defaults to process.env["OPENAI_API_KEY"]
       });
 
       let prompt = req.params.prompt

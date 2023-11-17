@@ -49,6 +49,20 @@ io.on('connection', (socket) => {
         let response = await axios.get(`http://localhost:3000/openai/response/${prompt}`);
         let promptResponse = response.data
         io.emit('chat message', {chatGpt: promptResponse});
+
+        //creating payload with post method to mongodb
+        let payload = {
+            prompt: prompt,
+            response: promptResponse
+        }
+
+        let makeHistoryResponse;
+
+        //saving prompt and response to mongodb
+        if(payload.prompt && payload.response){
+            //api to send payload to mongoDB
+            makeHistoryResponse = await axios.post(`http://localhost:3000/history/makeHistory`, payload);
+        }
     });
 });
 
