@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* Optional: include if you want to use border-box sizing */
+    font-family: system-ui;
   }
 
 
@@ -24,6 +25,7 @@
     padding: 15px;
     font-size: 18px;
     width: 344px;
+    text-align: justify;
 }
 
 .right_container{
@@ -31,6 +33,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    padding-left: 10px;
 }
 
 .right_container > form{
@@ -78,7 +81,7 @@
 }
 
 .loader{
-    margin: 16px 0px;
+    margin: 14px 0px;
     font-size: 18px;
     font-weight: 400;
     color:rgb(82, 82, 82);
@@ -94,3 +97,36 @@
     }
   }
  
+  .promptContainer{
+    margin: 18px 0px;
+    background-color: antiquewhite;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0px 1px 0px 0px #b0b0b0;
+}  
+
+.promptDate{
+    font-size: 14px;
+    background-color: #ead6bb;
+    padding: 2px 5px;
+    border-radius: 12px;
+    color: #725125;
+}
+
+.promptWrapper{
+    margin-top: 12px;
+}
+
+.you_wrapper{
+    margin-bottom: 5px;
+}
+
+.you{
+    font-weight: 800;
+    color: #674415;
+}
+
+.bob{
+    font-weight: 800;
+    color: #674415;
+}

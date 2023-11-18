@@ -72,12 +72,12 @@ function renderHistory(data) {
     let p2 = `<p>${obj.response}</p>`;
 
     let html = `<div class="promptContainer">
-                        <span class="promptDate">${formattedDate}</span>
-                        <div class="promptWrapper">
-                           <p>You: ${obj.prompt}</P>
-                           <p>Bob: ${obj.response}</P>
-                        </div>
-                      </div>`;
+                  <span class="promptDate">${formattedDate}</span>
+                  <div class="promptWrapper">
+                    <div class="you_wrapper"><span class="you">You:</span> ${obj.prompt}</div>
+                    <div><span class="bob">Bob:</span> ${obj.response}</div>
+                  </div>
+                </div>`;
 
     i.innerHTML = html;
     history.appendChild(i);
