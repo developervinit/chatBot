@@ -1,6 +1,3 @@
-const openAiResponse = require("../controllers/openAiController");
-const savingPromptAndResponseToDatabase = require("../controllers/historyController");
-const getData = require("../controllers/historyController");
 const axios = require("axios");
 
 test("openApi testing", async () => {

@@ -1,28 +1,25 @@
-const {OpenAI} = require('openai');
+const { OpenAI } = require("openai");
 require("dotenv").config();
 
 exports.openAiResponse = async (req, res) => {
+  let openAiKey = process.env.GPT_OPENAIKEY;
 
-    let openAiKey = process.env.GPT_OPENAIKEY;
+  const openai = new OpenAI({
+    apiKey: openAiKey, // defaults to process.env["OPENAI_API_KEY"]
+  });
 
-    const openai = new OpenAI({
-        apiKey: openAiKey, // defaults to process.env["OPENAI_API_KEY"]
-      });
+  let prompt = req.params.prompt;
 
-      let prompt = req.params.prompt
+  try {
+    const chatCompletion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: prompt }],
+      model: "gpt-3.5-turbo",
+    });
 
-      try{
-        const chatCompletion = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: prompt }],
-            model: 'gpt-3.5-turbo',
-          });
-      
-          res.status(200).send(chatCompletion.choices[0].message.content);
-      }catch(error){
-        res.status(400).json({
-            err: error
-        })
-      }
-      
-        
-}
+    res.status(200).send(chatCompletion.choices[0].message.content);
+  } catch (error) {
+    res.status(400).json({
+      err: error,
+    });
+  }
+};

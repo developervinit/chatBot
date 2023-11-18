@@ -1,132 +1,131 @@
 /* Resetting default margin and padding for all elements */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Optional: include if you want to use border-box sizing */
-    font-family: system-ui;
-  }
-
-
-.bot_ontainer{
-    display: flex;
-    flex-direction: row;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Optional: include if you want to use border-box sizing */
+  font-family: system-ui;
 }
 
-.left_container{
-    width: 30%;
+.bot_ontainer {
+  display: flex;
+  flex-direction: row;
 }
 
-.left_container > h2{
-    padding: 15px;
-    background: #f4f2f2;
+.left_container {
+  width: 30%;
 }
 
-.left_container > p{
-    padding: 15px;
-    font-size: 18px;
-    width: 344px;
-    text-align: justify;
+.left_container > h2 {
+  padding: 15px;
+  background: #f4f2f2;
 }
 
-.right_container{
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding-left: 10px;
+.left_container > p {
+  padding: 15px;
+  font-size: 18px;
+  width: 344px;
+  text-align: justify;
 }
 
-.right_container > form{
-    position: fixed;
-    bottom: 42px;
+.right_container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 10px;
 }
 
-.right_container > form > input{
-    width: 800px;
-    height: 38px;
-    font-size: 18px;
-    padding-left: 8px;
-    border-radius: 5px;
-    border-color: #b0711d;
+.right_container > form {
+  position: fixed;
+  bottom: 42px;
 }
 
-.history_wraper{
-    overflow: auto;
-    height: 560px;
-    margin-top: 15px;
-    display: flex;     /* to reverse the chat */
-    flex-direction: column-reverse; /* to reverse the chat */
+.right_container > form > input {
+  width: 800px;
+  height: 38px;
+  font-size: 18px;
+  padding-left: 8px;
+  border-radius: 5px;
+  border-color: #b0711d;
 }
 
-#history{
-    font-size: 18px;
-    width: 900px;
+.history_wraper {
+  overflow: auto;
+  height: 560px;
+  margin-top: 15px;
+  display: flex; /* to reverse the chat */
+  flex-direction: column-reverse; /* to reverse the chat */
 }
 
-.btn{
-    border: none;
-    background-color: antiquewhite;
-    padding: 10px 32px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #b0711d;
-    cursor: pointer;
+#history {
+  font-size: 18px;
+  width: 900px;
 }
 
-.notice{
-    text-align: center;
-    font-size: 14px;
-    margin-top: 5px;  
+.btn {
+  border: none;
+  background-color: antiquewhite;
+  padding: 10px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #b0711d;
+  cursor: pointer;
 }
 
-.loader{
-    margin: 14px 0px;
-    font-size: 18px;
-    font-weight: 400;
-    color:rgb(82, 82, 82);
-    animation: blinking 1s infinite;
+.notice {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.loader {
+  margin: 14px 0px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(82, 82, 82);
+  animation: blinking 1s infinite;
 }
 
 @keyframes blinking {
-    0% {
-      color: #0f0f0f;
-    }
-    100% {
-      color: #b9b9b9;
-    }
+  0% {
+    color: #0f0f0f;
   }
- 
-  .promptContainer{
-    margin: 18px 0px;
-    background-color: antiquewhite;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0px 1px 0px 0px #b0b0b0;
-}  
-
-.promptDate{
-    font-size: 14px;
-    background-color: #ead6bb;
-    padding: 2px 5px;
-    border-radius: 12px;
-    color: #725125;
+  100% {
+    color: #b9b9b9;
+  }
 }
 
-.promptWrapper{
-    margin-top: 12px;
+.promptContainer {
+  margin: 18px 0px;
+  background-color: antiquewhite;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0px 1px 0px 0px #b0b0b0;
 }
 
-.you_wrapper{
-    margin-bottom: 5px;
+.promptDate {
+  font-size: 14px;
+  background-color: #ead6bb;
+  padding: 2px 5px;
+  border-radius: 12px;
+  color: #725125;
 }
 
-.you{
-    font-weight: 800;
-    color: #674415;
+.promptWrapper {
+  margin-top: 12px;
 }
 
-.bob{
-    font-weight: 800;
-    color: #674415;
+.you_wrapper {
+  margin-bottom: 5px;
+}
+
+.you {
+  font-weight: 800;
+  color: #674415;
+}
+
+.bob {
+  font-weight: 800;
+  color: #674415;
 }
