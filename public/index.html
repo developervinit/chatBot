@@ -7,13 +7,36 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h2 class="loader">Bob a chatbot for goodspace</h2>
-    <ul id="history"></ul>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
-
+    <div class="bot_ontainer">
+      <div class="left_container">
+        <h2>Bob, chatBot-1.0</h2>
+        <p>
+          Bob, an AI chatbot powered by OpenAI's API, engages users in seamless
+          conversations. With its advanced language understanding, Bob adeptly
+          responds to diverse queries and topics, providing accurate and
+          relevant information. Whether discussing everyday topics or complex
+          subjects, Bob's conversational skills and adaptability create an
+          immersive and informative chatting experience, showcasing the
+          potential of AI-driven interactions in modern communication.
+        </p>
+      </div>
+      <div class="right_container">
+        <div class="history_wraper" id="history_wraper_id">
+            <ul id="history"></ul>
+        </div>
+        
+        <ul id="messages"></ul>
+        <form id="form" action="">
+          <input id="input" autocomplete="off" />
+          <button class="btn">Send</button>
+          <div class="notice">
+            <p>some time Bob takes longer time to response so please wait otherwise you can refresh the page</p>
+            <p>You can not ask questions while generating the response</p>
+          </div>
+        </form>
+        
+      </div>
+    </div>
 
     <!-- attaching js file and library  -->
     <script src="/socket.io/socket.io.js"></script>

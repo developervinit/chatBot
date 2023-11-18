@@ -6,12 +6,15 @@ const input = document.getElementById("input");
 const messages = document.getElementById("messages");
 const history = document.getElementById("history");
 
+var state = true; //this state variable to control rate limit of chatGPT which is 3.
+
 //from client on submit-event emitting a massage to server
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (input.value) {
+  if (input.value && state) {
     socket.emit("chat message", input.value); //emit massage
     input.value = "";
+    state = false;
   }
 });
 
@@ -21,8 +24,8 @@ socket.on("chat message", (msg) => {
 
   //showing prompt asked by user
   if (msg.hasOwnProperty("client")) {
-    item.textContent = `You: ${msg.client}`;
-    messages.appendChild(item);
+    // item.textContent = `You: ${msg.client}`;
+    // messages.appendChild(item);
 
     const loaderDiv = document.createElement("div");
     loaderDiv.setAttribute("class", "loader");
@@ -36,8 +39,10 @@ socket.on("chat message", (msg) => {
     item.textContent = `Bob: ${msg.chatGpt}`;
     messages.appendChild(item);
     messages.innerHTML = " "; //tricking the dom
+    state = true; 
   }
-  window.scrollTo(0, document.body.scrollHeight);
+
+   //window.scrollTo(0, document.body.scrollHeight);
 });
 
 //sending event to get data from the mongodb on first load of application
@@ -47,6 +52,8 @@ socket.emit("historyData", "onload");
 socket.on("historyData", (data) => {
   if (data.length) {
     renderHistory(data);
+  }else {
+    history.textContent = "It seems you have not ask any question yet. 🙂"; 
   }
 });
 
@@ -67,8 +74,8 @@ function renderHistory(data) {
     let html = `<div class="promptContainer">
                         <span class="promptDate">${formattedDate}</span>
                         <div class="promptWrapper">
-                           <p>You: ${obj.prompt}</P
-                           <p>Bob: ${obj.response}</P
+                           <p>You: ${obj.prompt}</P>
+                           <p>Bob: ${obj.response}</P>
                         </div>
                       </div>`;
 
