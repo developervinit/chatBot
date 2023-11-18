@@ -4,7 +4,7 @@
   "description": "this is a chatbot application using openai and socket.io",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest ./test/endpoints.test.js",
     "start": "nodemon server.js"
   },
   "author": "Vinit Sharma",
