@@ -5,6 +5,8 @@ const historyDataRoute = require('./routes/historyDataRoute');
 let app = express();
 app.use(express.json()); //to handle post request.
 
+app.use(express.static("public")); //to attach the static file.
+
 //mounting the routes.
 app.use('/openai', openAiRoute);
 app.use('/history', historyDataRoute);
