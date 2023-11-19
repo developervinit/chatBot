@@ -40,6 +40,11 @@ app.get("/", (req, res) => {
   res.sendFile(join(__dirname, "public/index.html"));
 });
 
+let domain_name_on_cloud = "https://bob-chatbot.onrender.com";
+let domain_name_on_local = "http://localhost:3001";
+
+let current_domain_name = domain_name_on_cloud;
+
 //sending response to client using socket.io
 io.on("connection", (socket) => {
   socket.on("chat message", async (prompt) => {
@@ -47,7 +52,7 @@ io.on("connection", (socket) => {
 
     //using endpoint to interact with chatGPT openai.
     let response = await axios.get(
-      `http://localhost:3001/openai/response/${prompt}`
+      `${current_domain_name}/openai/response/${prompt}`
     );
     let promptResponse = response.data;
     io.emit("chat message", { chatGpt: promptResponse });
@@ -64,7 +69,7 @@ io.on("connection", (socket) => {
     if (payload.prompt && payload.response) {
       //api to send payload to mongoDB
       makeHistoryResponse = await axios.post(
-        `http://localhost:3001/history/makeHistory`,
+        `${current_domain_name}/history/makeHistory`,
         payload
       );
     }
@@ -72,7 +77,7 @@ io.on("connection", (socket) => {
     //getting prompt and response from the mongodb
     if (makeHistoryResponse.data === "success") {
       let response = await axios.get(
-        `http://localhost:3001/history/getHistory`
+        `${current_domain_name}/history/getHistory`
       );
       let data = response.data;
       io.emit("historyData", data);
@@ -82,7 +87,7 @@ io.on("connection", (socket) => {
   socket.on("historyData", async (msg) => {
     if (msg === "onload") {
       let response = await axios.get(
-        `http://localhost:3001/history/getHistory`
+        `${current_domain_name}/history/getHistory`
       );
       let data = response.data;
       io.emit("historyData", data);
@@ -90,6 +95,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(process.env.PORT, () =>
+server.listen(process.env.PORT || 3001, () =>
   console.log(`Server is listening on the port ${process.env.PORT}`)
 );
