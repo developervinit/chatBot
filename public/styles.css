@@ -13,11 +13,13 @@
 
 .left_container {
   width: 30%;
+  background-color: #fff9f2;
+  height: 99vh;
 }
 
 .left_container > h2 {
   padding: 15px;
-  background: #f4f2f2;
+  background: #f3e6d5;
 }
 
 .left_container > p {
@@ -50,7 +52,7 @@
 }
 
 .history_wraper {
-  overflow: auto;
+  overflow-y: auto;
   height: 560px;
   margin-top: 15px;
   display: flex; /* to reverse the chat */
@@ -108,7 +110,7 @@
   font-size: 14px;
   background-color: #ead6bb;
   padding: 2px 5px;
-  border-radius: 12px;
+  border-radius: 5px;
   color: #725125;
 }
 

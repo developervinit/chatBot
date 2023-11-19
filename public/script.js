@@ -4,7 +4,13 @@ const socket = io(); //creating instance
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 const messages = document.getElementById("messages");
+const history_wraper_id = document.getElementById("history_wraper_id");
 const history = document.getElementById("history");
+
+//scrollBottom when focus in the input field.
+function scrollToBottom() {
+  history_wraper_id.scrollTop = history.scrollHeight;
+}
 
 var state = true; //this state variable to control rate limit of chatGPT which is 3.
 
@@ -30,7 +36,7 @@ socket.on("chat message", (msg) => {
     const loaderDiv = document.createElement("div");
     loaderDiv.setAttribute("class", "loader");
     loaderDiv.textContent =
-      "Please wait, Bob is getting the best response for you...";
+      "Bob is crafting your optimal response—please wait...";
     messages.appendChild(loaderDiv);
   } else {
     //showing response of prompt
@@ -40,9 +46,11 @@ socket.on("chat message", (msg) => {
     messages.appendChild(item);
     messages.innerHTML = " "; //tricking the dom
     state = true; 
+
+    // history.scrollTo(0, 590);
   }
 
-   //window.scrollTo(0, document.body.scrollHeight);
+  
 });
 
 //sending event to get data from the mongodb on first load of application
@@ -61,6 +69,7 @@ socket.on("historyData", (data) => {
 function renderHistory(data) {
   history.innerHTML = " ";
   data.forEach((obj) => {
+    
     const dateString = obj.date;
     const date = new Date(dateString);
 
