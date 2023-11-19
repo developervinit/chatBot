@@ -29,7 +29,7 @@ The chatbot web application allows users to interact with a chatbot. powered by 
   Running this project should be very easy, and quick.
 
   1. Clone Repository:
-     git clone https://github.com/developervinit/chatBot.git
+     git clone https://github.com/developervinit/chatBot.git</br>
      cd <project_folder>
   2. Install Dependencies:
      npm install
