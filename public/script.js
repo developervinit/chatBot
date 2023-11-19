@@ -73,8 +73,14 @@ function renderHistory(data) {
     const dateString = obj.date;
     const date = new Date(dateString);
 
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const formattedDate = new Intl.DateTimeFormat("en", options).format(date);
+    const options = { 
+      year: '2-digit', 
+      month: '2-digit', 
+      day: '2-digit' 
+    };
+
+    //showing date in dd/mm/yy format
+    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(date);
 
     let i = document.createElement("li");
     let p1 = `<p>${obj.prompt}</p>`;
