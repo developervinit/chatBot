@@ -61,7 +61,7 @@ socket.on("historyData", (data) => {
   if (data.length) {
     renderHistory(data);
   }else {
-    history.textContent = "It seems you have not ask any question yet. 🙂"; 
+    history.innerHTML = '<span class="info-text">It seems you have not ask any question yet. 🙂</span>'
   }
 });
 

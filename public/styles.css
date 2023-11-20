@@ -144,7 +144,7 @@
   }
 
   .history_wraper {
-    height: 70vh;
+    height: 74vh;
   }
 
   #history {
@@ -160,7 +160,19 @@
 }
 
 .right_container > form > input {
-  width: 72vw;
+  width: 64vw;
+}
+
+.info-text{
+  font-size: 14px;
+}
+
+.right_container > form {
+  text-align: center;
+}
+
+.notice {
+  font-size: 10px;
 }
   
 }
