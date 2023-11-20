@@ -144,15 +144,23 @@
   }
 
   .history_wraper {
-    height: 78vh;
+    height: 70vh;
   }
 
   #history {
-    width: 98vw;
+    width: 96vw;
   }
 
   .left_container > p {
     font-size: .8rem;
   }
+
+  .promptContainer {
+    width: 98%;
+}
+
+.right_container > form > input {
+  width: 72vw;
+}
   
 }
