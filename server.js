@@ -35,10 +35,6 @@ let dbString = process.env.CONNECTIONSTRING.replace(
 connectingMongoose(dbString);
 //end-code to connect mongodb
 
-//attaching static file on home-route
-app.get("/", (req, res) => {
-  res.sendFile(join(__dirname, "public/index.html"));
-});
 
 let domain_name_on_cloud = "https://bob-chatbot.onrender.com";
 let domain_name_on_local = "http://localhost:3001";
