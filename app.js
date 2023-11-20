@@ -12,6 +12,7 @@ app.use(express.static("public"));
 app.use('/openai', openAiRoute);
 app.use('/history', historyDataRoute);
 
+//handling all undefined routes on all methods.
 app.all("*", (req, res) => {
     res.send("Opps this route is not defined");
 })

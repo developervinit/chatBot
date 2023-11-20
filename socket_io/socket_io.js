@@ -7,6 +7,7 @@ const app = require("../app");
 let server = http.createServer(app);
 let io = new Server(server);
 
+//localhost and server domain_name
 let domain_name_on_cloud = "https://bob-chatbot.onrender.com";
 let domain_name_on_local = "http://localhost:3001";
 
