@@ -81,6 +81,11 @@
   margin-top: 5px;
 }
 
+#messages{
+  background-color: white;
+  padding: 1px 15px 1px 15px;
+}
+
 .loader {
   margin: 14px 0px;
   font-size: 18px;
