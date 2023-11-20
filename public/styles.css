@@ -24,8 +24,7 @@
 
 .left_container > p {
   padding: 15px;
-  font-size: 18px;
-  width: 344px;
+  font-size: 1.1rem;
   text-align: justify;
 }
 
@@ -53,7 +52,7 @@
 
 .history_wraper {
   overflow-y: auto;
-  height: 560px;
+  height: 72vh;
   margin-top: 15px;
   display: flex; /* to reverse the chat */
   flex-direction: column-reverse; /* to reverse the chat */
@@ -61,7 +60,7 @@
 
 #history {
   font-size: 18px;
-  width: 900px;
+  width: 68vw;
 }
 
 .btn {
@@ -135,4 +134,25 @@
 .bob {
   font-weight: 800;
   color: #674415;
+}
+
+/* media query */
+@media (max-width: 900px) {
+
+  .left_container {
+    display: none;
+  }
+
+  .history_wraper {
+    height: 78vh;
+  }
+
+  #history {
+    width: 98vw;
+  }
+
+  .left_container > p {
+    font-size: .8rem;
+  }
+  
 }
